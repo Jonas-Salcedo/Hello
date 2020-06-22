@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleGroup;
+import javafx.geometry.Orientation;
 public class Main extends Application {
 	
 	Button insertionSort = new Button("Insertion Sort");
@@ -52,6 +53,8 @@ public class Main extends Application {
 		Random.setToggleGroup(sortingoptions);
 		
 		
+		
+		
 		GridPane g = new GridPane();
 		g.setHgap(5);
 		g.setVgap(5);
@@ -83,6 +86,8 @@ public class Main extends Application {
 		g.add(comparisons, 3, 9);
 		g.add(movements, 3, 10);
 		g.add(totaltime, 3, 11);
+		
+		arrSize.valueProperty().addListener(ov -> sze.setText(((int)arrSize.getValue()) + ""));
 		
 		
 		
