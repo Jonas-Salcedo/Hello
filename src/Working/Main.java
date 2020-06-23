@@ -12,8 +12,10 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleGroup;
 import javafx.geometry.Orientation;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 public class Main extends Application {
-	
+	//Declares all the buttons
 	Button insertionSort = new Button("Insertion Sort");
 	Button SelectionSort = new Button("Selection Sort");
 	Button QuickSort = new Button("Quick Sort");
@@ -88,7 +90,13 @@ public class Main extends Application {
 		g.add(totaltime, 3, 11);
 		
 		arrSize.valueProperty().addListener(ov -> sze.setText(((int)arrSize.getValue()) + ""));
-		
+		arrSize.valueProperty().addListener(ov -> System.out.println(Double.parseDouble(sze.getText())));
+		sze.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e)
+			{
+				arrSize.valueProperty().setValue(Double.parseDouble(sze.getText()));
+				}
+				});
 		
 		
 		Scene scene = new Scene(g, 600, 600);
@@ -103,6 +111,7 @@ public class Main extends Application {
     {
     	
     	Application.launch(args);
+		
     	
     }
 }
