@@ -1,4 +1,5 @@
 package Working;
+import java.util.Random;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.geometry.HPos;
@@ -20,7 +21,8 @@ public class Main extends Application {
 	Button SelectionSort = new Button("Selection Sort");
 	Button QuickSort = new Button("Quick Sort");
 	Button MergeSort = new Button("Merge Sort");
-	Button HeapRadixSort = new Button("Heap Radix Sort");
+	Button HeapSort = new Button("Heap Sort");
+	Button RadixSort = new Button("Radix Sort");
 	Button GenerateList = new Button("Generate List");
 	Label winningalgorithm = new Label("Winning Algorithm");
 	Label listProperties = new Label("List Properties");
@@ -65,8 +67,9 @@ public class Main extends Application {
 		g.add(SelectionSort, 0, 1);
 		g.add(QuickSort, 0, 2);
 		g.add(MergeSort, 0, 3);
-		g.add(HeapRadixSort, 0, 4);
-		g.add(GenerateList, 0, 5);
+		g.add(HeapSort, 0, 4);
+		g.add(RadixSort, 0, 5);
+		g.add(GenerateList, 0, 6);
 		g.add(winningalgorithm, 1,0);
 		g.add(algorithm, 2, 0);
 		g.add(listProperties, 1, 1);
@@ -106,6 +109,10 @@ public class Main extends Application {
 		stage.setScene(scene);
 		stage.show();
 	}
+	
+	
+	
+	
     //Generates a list with the number of elements and list properties specified.
 	public static int[] generateList(int numElements, char type) throws InterruptedException {
 		//Generates inorder list
@@ -117,6 +124,7 @@ public class Main extends Application {
 				list[x-1] = x;
 			}
 	    }
+		//Generates reverseorder list
 		else if(type == 'r')
 	    {
 			for(int x = 1; x<=numElements;x++)
@@ -124,6 +132,7 @@ public class Main extends Application {
 				list[numElements-x] = x;
 			}
 	    }
+		//Generates almostorderlist
 		else if(type == 'a')
 		{
 			//Generates inorder list
@@ -132,51 +141,83 @@ public class Main extends Application {
 				list[x-1] = x;
 			}
 			//Generates random number between 2 and 8
-			int r = 2 + (int)(System.currentTimeMillis()%((8-2) + 1));
+			Random ran = new Random();
+			//int r = 2 + (int)(System.currentTimeMillis()%((8-2) + 1));
+			int r = ran.nextInt(7) + 2;
 			//Divides random number by 2 because 2 elements will be switched. a number between 4 and 1 is generated
 			int counter = r/2;
 			System.out.println(counter);
 			for(int x = 0; x<counter; x++)
 			{   
-				r = 0 + (int)(System.currentTimeMillis()%(((numElements-1)-0) + 1));
+				//r = 0 + (int)(System.currentTimeMillis()%(((numElements-1)-0) + 1));
+				ran = new Random();
+				r = ran.nextInt(numElements) + 0;
 				int s = r;
 				//Makes sure s is not equal to r ever
 			    while(s == r) {
-			    	s = 0 + (int)(System.currentTimeMillis()%(((numElements-1)-0) + 1));
+			    	//s = 0 + (int)(System.currentTimeMillis()%(((numElements-1)-0) + 1));
+			    	ran = new Random();
+			    	s = ran.nextInt(numElements) + 0;
 			    }
+			    //Swaps element at s with element at r 
 			    int el = list[s];
 			    list[s] = list[r];
 			    list[r] = el;
 			}
 		}
+		//Generates randomorder list
 		else if(type == 'd')
 		{
 			for(int x = 0; x<numElements; x++)
 			{
 				//Generates random number between 1 and n to add to the array
-				int r = 1 + (int)(System.currentTimeMillis()%(((numElements)-1) + 1));
+				//int r = 1 + (int)(System.currentTimeMillis()%(((numElements)-1) + 1));
+				Random ran = new Random();
+				int r = ran.nextInt(numElements) + 0;
 				list[x] = r;
-				Thread.sleep(r);
+				//Thread.sleep((r%2)+2);
 			}
 		}
 		return list;
 	}
+	
 
+
+	
+	
+	
+	//Main Method
 	public static void printList(int[] list)
 	{
 		for(int i: list)
 		{
-			System.out.print(i);
-			System.out.print(",");
+			System.out.println(i);
+			//System.out.print(",");
 		}
 	}
 	public static void main(String args[]) throws InterruptedException
     {
     	
     	//Application.launch(args);
+		
+		//Testing List Methods
 		int listSize = 60;
-		int[] list = generateList(listSize,'d');
+		int[] list = generateList(listSize,'r');
+		//Creates objects with sorting method classes
+		SelectionSort selsor = new SelectionSort();
+		InsertionSort insor = new InsertionSort();
+		//Print list before it is sorted
 		printList(list);
+		//System.out.println("\n\n\n\n");
+		//Call object from sorting method.
+	    //long trival[] = insor.insertionSort(list);
+		long trival[] = selsor.selectionSort(list);
+		//System.out.println();
+		 printList(list);
+		 System.out.println("Comparisons: " + trival[0]);
+		 System.out.println("Movements: " + trival[1]);
+		 System.out.println("Total Time: " + trival[2]);
+		
 		
     	
     }
