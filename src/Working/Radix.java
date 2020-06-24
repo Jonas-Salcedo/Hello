@@ -13,8 +13,7 @@ public static long[] Radix(int[] list) {
 	// Find the maximum number to know number of digits
 		int mx = list[0];
 	    for (int i = 1; i < list.length-1; i++) {
-	    	//Every time this program loops, a comparison has been completed
-    	    threeVals[0]++;
+	    
 	       if (list[i] > mx) 
 	               mx = list[i];
 	     //Every time the if statement is evaluated to true a movement has been completed
