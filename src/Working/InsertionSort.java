@@ -1,3 +1,5 @@
+//Max number of comparisons: n*(n-1)/2
+//Max number of movements: 2*(n-1) + n*(n-1)/2
 package Working;
 
 public class InsertionSort {
@@ -12,7 +14,7 @@ public class InsertionSort {
 		for(int i = 1; i<list.length; i++)
 		{
 			//A comparison occurs with every iteration of this loop.
-			threeVals[0]++;
+			//threeVals[0]++;
             int currentElement = list[i];
             // Add to number of movements on account of the movement
             // that occured above
@@ -32,7 +34,7 @@ public class InsertionSort {
             list[k + 1] = currentElement;
             // Add to number of movements on account of the movement
             // that occured above
-            threeVals[1]++;
+           threeVals[1]++;
 		}
 		//Time after the sorting is completed
 		long et = System.nanoTime();
@@ -42,3 +44,4 @@ public class InsertionSort {
 		return threeVals;
 	}
 }
+
