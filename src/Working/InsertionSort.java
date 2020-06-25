@@ -13,8 +13,7 @@ public class InsertionSort {
 		long st = System.nanoTime();
 		for(int i = 1; i<list.length; i++)
 		{
-			//A comparison occurs with every iteration of this loop.
-			//threeVals[0]++;
+			
             int currentElement = list[i];
             // Add to number of movements on account of the movement
             // that occured above
@@ -44,4 +43,5 @@ public class InsertionSort {
 		return threeVals;
 	}
 }
+
 
