@@ -12,7 +12,7 @@ public class SelectionSort {
 		long st = System.nanoTime();
     	for(int i = 0; i<list.length-1;i++)
     	{
-    		//A data movement occurs for every iteration in selection sort. 
+    		//A data movement occurs for every iteration in selection sort except for the first one. 
     		
     		
     		int currentMin = list[i];
@@ -38,6 +38,7 @@ public class SelectionSort {
     			//Every time this if statement transpires, a comparison has been completed
 	    	    threeVals[0]++;
     		}
+    		//Every time this loop transpires, a movement has occured
     		threeVals[1]++;
 			
 
@@ -46,6 +47,7 @@ public class SelectionSort {
     			
     			list[currentMinIndex] = list[i];
     			list[i] = currentMin;
+    			//Every time this if-statement is true, 2 movements have occured.
     			threeVals[1]+=2;
         		
     		}
