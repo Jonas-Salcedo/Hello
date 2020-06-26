@@ -2,8 +2,18 @@ package Working;
 
 public class QuickSort {
 
-	public static void quickSort(int[] list){
+
+
+	public static long[] quickSort(int[] list){
+
+		//Element 0 keeps track of Comparisons, Element 1 keeps track of movements, and Element 2 keeps track of time.
+		long[] threeVals = {0, 0, 0};
+		//Time before sorting is completed
+		long st = System.nanoTime();
+
 		quickSort(list, 0, list.length - 1);
+
+		
 	}
 
 	public static void quickSort(int[] list, int first, int last){
