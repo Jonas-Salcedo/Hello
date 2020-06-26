@@ -6,19 +6,19 @@ public class MergeSort {
 		if(list.length>1){
 
  			//merge sort first half
- 			int[] firsthalf = new int[list.length / 2];
- 			System.arraycopy(list, 0, firsthalf, 0, list.length / 2);
- 			MergeSort(firsthalf);
+ 			int[] firstHalf = new int[list.length / 2];
+ 			System.arraycopy(list, 0, firstHalf, 0, list.length / 2);
+ 			mergeSort(firstHalf);
 
  			//merge sort the second half
  			int secondHalfLength = list.length - list.length / 2;
  			int[] secondHalf = new int[secondHalfLength];
  			System.arraycopy(list, list.length / 2,
  				secondHalf, 0, secondHalfLength);
- 			merge(secondHalf);
+ 			mergeSort(secondHalf);
 
  			//merge firstHalf with secondHalf into list
- 			merge(firsthalf, secondHalf, list);
+ 			merge(firstHalf, secondHalf, list);
  		}
 	}
 
@@ -35,7 +35,7 @@ public class MergeSort {
 				temp[current3++] = list2[current2++];
 		}
 
-		while (current1 < list.length)
+		while (current1 < list1.length)
 			temp[current3++] = list1[current1++];
 
 		while(current2 < list2.length)
