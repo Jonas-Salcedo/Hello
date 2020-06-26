@@ -13,7 +13,11 @@ public class QuickSort {
 
 		quickSort(list, 0, list.length - 1);
 
-		
+			long et = System.nanoTime();
+		//Calculates runtime of the sorting by subtracting the time at the end from the time at the start
+		threeVals[2] = et - st;
+		//Returns comparisons, movements, and total time in that order;
+		return threeVals;
 	}
 
 	public static void quickSort(int[] list, int first, int last){
