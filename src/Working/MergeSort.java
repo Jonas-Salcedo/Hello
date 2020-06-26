@@ -13,7 +13,7 @@ public class MergeSort {
 		long [] tempor = {0,0,0};
 
 		//long to hold comparisons
-		long comp = 0;
+		long comp[] = {0,0};
 
 		if(list.length>1){
 
@@ -22,7 +22,9 @@ public class MergeSort {
  			System.arraycopy(list, 0, firstHalf, 0, list.length / 2);
  			tempor= mergeSort(firstHalf);
  			//add amount of previous comparisons to threeVals
-  			threeVals[0] = threeVals[0]+tempor[0];			
+  			threeVals[0] = threeVals[0]+tempor[0];
+  			//add movements done during first mergerSort
+  			threeVals[1] = threeVals[1]+ tempor[1];			
 
 
  			//merge sort the second half
@@ -32,12 +34,16 @@ public class MergeSort {
  				secondHalf, 0, secondHalfLength);
  			tempor= mergeSort(secondHalf);
  			//add amount of previous comparisons to threeVals
-  			threeVals[0] = threeVals[0]+tempor[0]; 			
+  			threeVals[0] = threeVals[0]+tempor[0]; 
+  			//add movements
+  			threeVals[1] = threeVals[1]+ tempor[1];			
 
  			//merge firstHalf with secondHalf into list
  			comp =merge(firstHalf, secondHalf, list);
  			//add comparisons from the merge to threeVals
- 			threeVals[0] = threeVals[0]+comp;
+ 			threeVals[0] = threeVals[0]+comp[0];
+ 			//add movements done to threeVals
+ 			threeVals[1] = threeVals[1]+comp[1];
  		}
 
 		//Time after the sorting is completed
@@ -50,25 +56,30 @@ public class MergeSort {
 	}
 
 	/**Merge two sorted lists **/
-	public static long merge(int[] list1, int[] list2, int[] temp){
+	public static long[] merge(int[] list1, int[] list2, int[] temp){
 		int current1 = 0; //current index in list1
 		int current2 = 0; //current index in list2
 		int current3 = 0; //current index in temp
 
-		long compar = 0 ;//holds comparisons
+		long compar[] = {0,0} ;//holds comparisons and movements
 		while(current1< list1.length && current2 < list2.length){
-			compar++;
+			compar[0]++;
+			compar[1]++;
 			if(list1[current1] < list2[current2])
 				temp[current3++] = list1[current1++];
 			else
 				temp[current3++] = list2[current2++];
 		}
 
-		while (current1 < list1.length)
+		while (current1 < list1.length){
+			compar[1]++;
 			temp[current3++] = list1[current1++];
+		}
 
-		while(current2 < list2.length)
+		while(current2 < list2.length){
+			compar[1]++;
 			temp[current3++] = list2[current2++];
+		}
 
 		return compar;
 	}
