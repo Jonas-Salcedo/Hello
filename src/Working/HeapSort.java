@@ -1,11 +1,13 @@
 package Working; 
+//Max number of comparisons: WorstCaste O(3Nlog(N)) Best O(2Nlog(N))
 
+//Max number of movements: 2*(n-1) + n*(n-1)/2
 
 
 public class HeapSort 
 {
 	static long[] threeVals = {0, 0, 0};
-
+         //Method for sorting list
 	public static long[] HeapSort(int[] list)
     {
 
