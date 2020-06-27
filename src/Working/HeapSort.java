@@ -1,85 +1,131 @@
-package Working; 
-//Max number of comparisons: WorstCaste O(3Nlog(N)) Best O(2Nlog(N))
+package Working;
+//Best case Comparison 2N(log(N)
+//Worst case comparison 3N(log(N)
 
-//Max number of movements: 2*(n-1) + n*(n-1)/2
-
-
-public class HeapSort 
-{
+public class HeapSort{
+	//Element 0 keeps track of Comparisons, Element 1 keeps track of movements, and Element 2 keeps track of time.
 	static long[] threeVals = {0, 0, 0};
-         //Method for sorting list
-	public static long[] HeapSort(int[] list)
-    {
+	//Keeps track of the time when 
+	static long st = System.nanoTime();
+public static long[] HeapSort(int[] list) {
+		 //Call to method to sort heap 
+		heapSort(list);
+		//Keeps track of the time when the sorting ended
+	    	long et = System.nanoTime();
+	    	//Calculates runtime of the sorting by subtracting the time at the end from the time at the start
+	    	threeVals[2] = et - st;
+	    	//Returns comparisons, movements, and total time in that order;
+	    	return threeVals;
+	    }
+//Method to sort	
+public static void heapSort(int[] list) {
+	
+			
+	  // Create a Heap of integers
+	  Heap<Integer> heap = new Heap<Integer>();
 
-        int size = list.length;
-        //Element 0 keeps track of Comparisons, Element 1 keeps track of movements, and Element 2 keeps track of time.
-      		
-      	//Keeps track of the time when the sort began
-      	long st = System.nanoTime();
+	  // Add elements to the heap
+	  for (int i = 0; i < list.length; i++)
+	   heap.add(list[i]);
 
-        // Build heap
-        for (int i = size / 2 - 1; i >= 0; i--) {
-        	//Every time this program loops, a movement occurs for each element of list
-    	    threeVals[1]++;
-            heap(list, size, i);
-            }
+	  // Remove elements from the heap
+	  for (int i = list.length - 1; i >= 0; i--)
+	   list[i] = heap.remove();
+	
+	 }
+     //Method to Heap Numbers
+	 static class Heap<E extends Comparable<E>> {
+	  private java.util.ArrayList<E> list = new java.util.ArrayList<E>();
 
-        //Extract Max from heap and replace it with the last element in the array
-        for (int i=size-1; i>=0; i--) {
-        	//Every time this program loops, a two movement occurs for each element of list
-    	    threeVals[1]++;
+	  /** Create a default heap */
+	  public Heap() {
+	  }
 
-            //arrA[0] is a root of the heap and is the max element in heap
-            int x = list[0];
-            list[0] = list[i];
-            list[i] = x;
+	  /** Create a heap from an array of objects */
+	  public Heap(E[] objects) {
+	   for (int i = 0; i < objects.length; i++)
+	    add(objects[i]);
+	  }
 
-            // call maxheap on the reduced heap
-            heap(list, i, 0);
+	  /** Add a new object into the heap */
+	  public void add(E newObject) {
+	   list.add(newObject); // Append to the heap
+	   threeVals[1]++;
+	   int currentIndex = list.size() - 1; 				// The index of the last node 
+       
+	   //While loop runs until there 
+	   //are no more elements 
+	   //then sent from add Heap elements for loop
+	   while (currentIndex > 0) { 						//currentIndex = list.size()-1;
+		 int parentIndex = (currentIndex - 1) / 2; 		//On first pass Parent Index is middle of heap
+	    
+	    
+	    threeVals[0]++; //Below 'if' statement is a comparison that will happen with each while loop
+	    // Swap if the current object is greater than its parent
+	    if (list.get(currentIndex).compareTo(list.get(parentIndex)) > 0) {
+	     E temp = list.get(currentIndex);				//Temp receives currentIndex to become new parent
+	     list.set(currentIndex, list.get(parentIndex)); //Current Index takes old parent index value
+	     list.set(parentIndex, temp); 					//Parent Index is set with new value 
+	     //Since current index thus become parent and the parent Index became current index
+	     threeVals[1]+=2;
+	    } else
+	     break; 										// The tree is a heap now
 
-        }
-    	//Keeps track of the time when the sorting ended
-    	long et = System.nanoTime();
-    	//Calculates runtime of the sorting by subtracting the time at the end from the time at the start
-    	threeVals[2] = et - st;
-    	//Returns comparisons, movements, and total time in that order;
-    	return threeVals;
+	    currentIndex = parentIndex; //CurrentIndex updated each 
+	    threeVals[1]++;             //while loop equals movement
+	   }
+	  }
 
-    }
+	  /** Remove the root from the heap */
+	  public E remove() {
+	   if (list.size() == 0)
+	    return null;
 
+	   E removedObject = list.get(0);
+	   list.set(0, list.get(list.size() - 1));
+	   list.remove(list.size() - 1);
 
-    // Heap subtree with node i
-    static void heap(int[] list, int heapSize, int i) {
-
-        int largest = i; // Initialize largest as root
-        int leftChildIdx  = 2*i + 1; // left = 2*i + 1
-        int rightChildIdx  = 2*i + 2; // right = 2*i + 2
-        
-        //Every time is called two comparison are been completed
+	   int currentIndex = 0;
+	   while (currentIndex < list.size()) {
+	    int leftChildIndex = 2 * currentIndex + 1;  //Positions 1,3,5,7,9...
+	    int rightChildIndex = 2 * currentIndex + 2; //Positions 2,4,6,8,..
+	    
+	    // Find the maximum between two children
+	    if (leftChildIndex >= list.size()) 		 	//Checks for end of Heap
+	     break; 									//The tree is a heap
+	    int maxIndex = leftChildIndex; 				//Max Index starts at position 1
+	    
+	    if (rightChildIndex < list.size()) { 		//Checks for end of Heap      
+	    threeVals[0]++; 							//The below is comparison
+	    //1st check is left child is less than right child
+	     if (list.get(maxIndex).compareTo(list.get(rightChildIndex)) < 0) { 
+	      maxIndex = rightChildIndex; 				//Right child becomes max
+	      threeVals[1]++;						    //One movement occurs
+	     }
+	    }
 	    threeVals[0]++;
-	    //Every time heap is called at least one movement occurs to largest
-	    threeVals[1]++;
-	 // If left child is larger than root
-        if (leftChildIdx  < heapSize && list[leftChildIdx ] > list[largest]) 
-            largest = leftChildIdx;         
+	    // Swap if the current node is less than the maximum
+	    //On first pass position '0' checks if it is larger than position 1 and position 2
+	    if (list.get(currentIndex).compareTo(list.get(maxIndex)) < 0) {
+	     E temp = list.get(maxIndex); //New current index prep
+	     list.set(maxIndex, list.get(currentIndex)); //New max index
+	     list.set(currentIndex, temp); //New current index
+	     currentIndex = maxIndex; //Current index position updated to Max index
+	     threeVals[1]+=2;       //Two movements
+	    } else
+	     break; // The tree is a heap
+	   }
 
-        // If right child is larger than largest so far     
-        if (rightChildIdx  < heapSize && list[rightChildIdx ] > list[largest])         	
+	   return removedObject;
+	  }
 
-            largest = rightChildIdx;      
+	  /** Get the number of nodes in the tree */
+	  public int getSize() {
+	   return list.size();
+	  }
+	
+		  
+	  }
+	  
+	 }
 
-        	// If root is not largest
-            if (largest != i) {
-            int swap = list[i];
-            list[i] = list[largest];
-            list[largest] = swap;
-            
-            //every time the if statement evaluates to true two movements occur
-            threeVals[1]+=2;
-
-            // Recursive call to  heap the sub-tree
-            heap(list, heapSize, largest);
-
-        }
-    }
-}
