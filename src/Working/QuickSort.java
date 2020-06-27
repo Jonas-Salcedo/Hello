@@ -2,16 +2,17 @@ package Working;
 
 public class QuickSort {
 
-
+		//Element 0 keeps track of Comparisons, Element 1 keeps track of movements, and Element 2 keeps track of time.
+		static long[] threeVals = {0, 0, 0};
 
 	public static long[] quickSort(int[] list){
 
-		//Element 0 keeps track of Comparisons, Element 1 keeps track of movements, and Element 2 keeps track of time.
-		long[] threeVals = {0, 0, 0};
+
 		//Time before sorting is completed
 		long st = System.nanoTime();
 
 		quickSort(list, 0, list.length - 1);
+
 
 			long et = System.nanoTime();
 		//Calculates runtime of the sorting by subtracting the time at the end from the time at the start
@@ -37,13 +38,19 @@ public class QuickSort {
 
 		while(high>low){
 
-			while(low <= high && list[low] <= pivot)
+			while(low <= high && list[low] <= pivot){
+				
 				low++;
+			}	
+
 
 			while( low <= high && list[high]> pivot)
 				high--;
 
 			if(high > low){
+				//thereis amovement done
+				threeVals[1]++;
+
 				int temp = list[high];
 				list[high] = list[low];
 				list[low] = temp;
@@ -54,6 +61,9 @@ public class QuickSort {
 			high--;
 
 		if(pivot > list[high]){
+			//another movement done
+			threeVals[1]++;
+
 			list[first] = list[high];
 			list[high] = pivot;
 			return high;
