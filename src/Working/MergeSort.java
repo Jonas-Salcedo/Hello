@@ -12,7 +12,7 @@ public class MergeSort {
 		//temporary class to hold info from recursions
 		long [] tempor = {0,0,0};
 
-		//long to hold comparisons
+		//long array to hold comparisons and movements temporarily
 		long comp[] = {0,0};
 
 		if(list.length>1){
@@ -33,9 +33,9 @@ public class MergeSort {
  			System.arraycopy(list, list.length / 2,
  				secondHalf, 0, secondHalfLength);
  			tempor= mergeSort(secondHalf);
- 			//add amount of previous comparisons to threeVals
+ 			//add amount of previous comparisons to threeVals from the second half
   			threeVals[0] = threeVals[0]+tempor[0]; 
-  			//add movements
+  			//add movements from the second half
   			threeVals[1] = threeVals[1]+ tempor[1];			
 
  			//merge firstHalf with secondHalf into list
