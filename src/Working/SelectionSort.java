@@ -1,7 +1,4 @@
 package Working;
-//Max number of comparisons(the number that should show up when
-//sorting a reverse order list):(n*n-n)/2
-//Max number of movements: 3*(n-1)
 public class SelectionSort {
 	//The method for sorting the numbers
     public static long[] selectionSort(int[] list)
@@ -16,10 +13,8 @@ public class SelectionSort {
     		
     		
     		int currentMin = list[i];
-    		int currentMinIndex = i;
-    		if(i >= 1) {
     		threeVals[1]++;
-    		}
+    		int currentMinIndex = i;
     		
     		
     		for(int j = i+1; j < list.length; j++)
@@ -30,16 +25,16 @@ public class SelectionSort {
     	    	
     	    	    
     				currentMin = list[j];
-    				
     				currentMinIndex = j;
+    				//Data movement occurs every time this occurs
+    				threeVals[1]++;
     	    		
     	    		
     			}
     			//Every time this if statement transpires, a comparison has been completed
 	    	    threeVals[0]++;
     		}
-    		//Every time this loop transpires, a movement has occured
-    		threeVals[1]++;
+
 			
 
     		if(currentMinIndex != i)
