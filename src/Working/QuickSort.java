@@ -33,33 +33,27 @@ public class QuickSort {
 	/** partition the list array **/
 	public static int partition(int[] list, int first, int last){
 		int pivot = list[first];
+		threeVals[1]++;
 		int low = first +1;
 		int high = last;
 
 		while(high>low){
 
-			//count comparisons
-			threeVals[0]++;
-
 			while(low <= high && list[low] <= pivot){
-				
-				low++;
-
 				threeVals[0]++;
+				low++;
 			}	
 
-			//another set of comparisons
-			threeVals[0]++;
 
-			while( low <= high && list[high]> pivot){
+			while( low <= high && list[high]> pivot) {
 				high--;
-
 				threeVals[0]++;
-			}
+				}
+			
 
 			if(high > low){
 				//thereis amovement done
-				threeVals[1]++;
+				threeVals[1]+=3;
 
 				int temp = list[high];
 				list[high] = list[low];
@@ -67,18 +61,14 @@ public class QuickSort {
 			}
 		}
 
-		threeVals[0]++;
-
-		while(high > first && list[high] >= pivot){
+		while(high > first && list[high] >= pivot) {
 			high--;
-
 			threeVals[0]++;
 		}
-
-		threeVals[0]++;
+		threeVals[0]+=1;
 		if(pivot > list[high]){
 			//another movement done
-			threeVals[1]++;
+			threeVals[1]+=2;
 
 			list[first] = list[high];
 			list[high] = pivot;
@@ -90,3 +80,4 @@ public class QuickSort {
 	}
 
 }
+
