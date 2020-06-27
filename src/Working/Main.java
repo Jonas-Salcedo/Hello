@@ -103,7 +103,636 @@ public class Main extends Application {
 				}
 				});
 		
+		insertionSort.setOnAction(new EventHandler<ActionEvent>() {
+			
+		      public void handle(ActionEvent e)
+		      {
+		    	  algorithm.setText("Insertion Sort");
+		      }
+		});
 		
+		SelectionSort.setOnAction(new EventHandler<ActionEvent>() {
+			
+		      public void handle(ActionEvent e)
+		      {
+		    	  algorithm.setText("Selection Sort");
+		      }
+		});
+		
+		QuickSort.setOnAction(new EventHandler<ActionEvent>() {
+			
+		      public void handle(ActionEvent e)
+		      {
+		    	  algorithm.setText("Quick Sort");
+		      }
+		});
+		
+		HeapSort.setOnAction(new EventHandler<ActionEvent>() {
+			
+		      public void handle(ActionEvent e)
+		      {
+		    	  algorithm.setText("Heap Sort");
+		      }
+		});
+		
+		MergeSort.setOnAction(new EventHandler<ActionEvent>() {
+			
+		      public void handle(ActionEvent e)
+		      {
+		    	  algorithm.setText("Merge Sort");
+		      }
+		});
+		
+		RadixSort.setOnAction(new EventHandler<ActionEvent>() {
+			
+		      public void handle(ActionEvent e)
+		      {
+		    	  algorithm.setText("Radix Sort");
+		      }
+		});
+		
+		GenerateList.setOnAction(new EventHandler<ActionEvent>() {
+			
+		      public void handle(ActionEvent e)
+		      {
+		    	  //Selection Sort
+		    	  if(algorithm.getText().equals("Selection Sort"))
+		    	  {
+		    		  if(InOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'i');
+							SelectionSort s = new SelectionSort();
+							 long trival[] = s.selectionSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("InOrder");
+							 sort.setText("Selection Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(AlmostOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'a');
+							SelectionSort s = new SelectionSort();
+							 long trival[] = s.selectionSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("AlmostOrder");
+							 sort.setText("Selection Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(ReverseOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'r');
+							SelectionSort s = new SelectionSort();
+							 long trival[] = s.selectionSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("RandomOrder");
+							 sort.setText("Selection Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(Random.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'d');
+							SelectionSort s = new SelectionSort();
+							 long trival[] = s.selectionSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("RandomOrder");
+							 sort.setText("Selection Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    	  }
+		    	  //Insertion Sort
+		    	  else if(algorithm.getText().equals("Insertion Sort"))
+		    	  {
+		    		  if(InOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'i');
+							InsertionSort s = new InsertionSort();
+							long trival[] = s.insertionSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("InOrder");
+							 sort.setText("Insertion Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(AlmostOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'a');
+							InsertionSort s = new InsertionSort();
+							long trival[] = s.insertionSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("AlmostOrder");
+							 sort.setText("Insertion Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(ReverseOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'r');
+							InsertionSort s = new InsertionSort();
+							long trival[] = s.insertionSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("ReverseOrder");
+							 sort.setText("Insertion Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(Random.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'d');
+							InsertionSort s = new InsertionSort();
+							long trival[] = s.insertionSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("RandomOrder");
+							 sort.setText("Insertion Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    	  }
+		    	  //Quicksort
+		    	  else if(algorithm.getText().equals("Quick Sort"))
+		    	  {
+		    		  if(InOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'i');
+							QuickSort s = new QuickSort();
+							long trival[] = s.quickSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("InOrder");
+							 sort.setText("Quick Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(AlmostOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'a');
+							QuickSort s = new QuickSort();
+							long trival[] = s.quickSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("AlmostOrder");
+							 sort.setText("Quick Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(ReverseOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'r');
+							QuickSort s = new QuickSort();
+							long trival[] = s.quickSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("ReverseOrder");
+							 sort.setText("Quick Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(Random.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'d');
+							QuickSort s = new QuickSort(); 
+							long trival[] = s.quickSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("RandomOrder");
+							 sort.setText("Quick Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    	  }
+		    	  //Merge Sort
+		    	  else if(algorithm.getText().equals("Merge Sort"))
+		    	  {
+		    		  if(InOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'i');
+							MergeSort s = new MergeSort();
+							long trival[] = s.mergeSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("InOrder");
+							 sort.setText("Merge Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(AlmostOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'a');
+							MergeSort s = new MergeSort();
+							long trival[] = s.mergeSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("AlmostOrder");
+							 sort.setText("Merge Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(ReverseOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'r');
+							MergeSort s = new MergeSort();
+							long trival[] = s.mergeSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("ReverseOrder");
+							 sort.setText("Merge Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(Random.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'d');
+							MergeSort s = new MergeSort();
+							long trival[] = s.mergeSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("RandomOrder");
+							 sort.setText("Merge Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    	  }
+		    	  //Heap Sort
+		    	  else if(algorithm.getText().equals("Heap Sort"))
+		    	  {
+		    		  if(InOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'i');
+							HeapSort s = new HeapSort();
+							long trival[] = s.HeapSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("InOrder");
+							 sort.setText("Heap Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(AlmostOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'a');
+							HeapSort s = new HeapSort();
+							long trival[] = s.HeapSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("AlmostOrder");
+							 sort.setText("Heap Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(ReverseOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'r');
+							HeapSort s = new HeapSort();
+							long trival[] = s.HeapSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("ReverseOrder");
+							 sort.setText("Heap Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(Random.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'d');
+							HeapSort s = new HeapSort();
+							long trival[] = s.HeapSort(list);
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("RandomOrder");
+							 sort.setText("Heap Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    	  }
+		    	  //Radix Sort
+		    	  else if(algorithm.getText().equals("Radix Sort"))
+		    	  {
+		    		  if(InOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'i');
+							Radix s = new Radix();
+						    long trival[] = s.radixsort(list, (int)arrSize.getValue());
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("InOrder");
+							 sort.setText("Radix Sort");
+							comparisons.setText(trival[0]+"");
+							movements.setText(trival[1]+"");
+							totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(AlmostOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'a');
+							Radix s = new Radix();
+							long trival[] = s.radixsort(list, (int)arrSize.getValue());
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("AlmostOrder");
+							 sort.setText("Radix Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(ReverseOrder.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'r');
+							Radix s = new Radix();
+							long trival[] = s.radixsort(list,(int)arrSize.getValue());
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("ReverseOrder");
+							 sort.setText("Radix Sort");
+							comparisons.setText(trival[0]+"");
+						    movements.setText(trival[1]+"");
+							totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    		  else if(Random.isSelected())
+		    		  {
+		    			  try {
+							int[] list = generateList((int)arrSize.getValue(),'d');
+							Radix s = new Radix();
+							 long trival[] = s.radixsort(list, (int)arrSize.getValue());
+							 System.out.println();
+							 printList(list);
+							 System.out.println("Comparisons: " + trival[0]);
+							 System.out.println("Movements: " + trival[1]);
+							 System.out.println("Total Time: " + trival[2]);
+							 sze2.setText(arrSize.getValue() + "");
+							 datatype.setText("RandomOrder");
+							 sort.setText("Radix Sort");
+							 comparisons.setText(trival[0]+"");
+							 movements.setText(trival[1]+"");
+							 totaltime.setText(trival[2]+"");
+							
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+		    		  }
+		    	  }
+		      }
+		});
 		Scene scene = new Scene(g, 600, 600);
 		stage.setTitle("Sorting Project");
 		stage.setScene(scene);
@@ -198,25 +827,17 @@ public class Main extends Application {
 	public static void main(String args[]) throws InterruptedException
     {
     	
-    	//Application.launch(args);
-		
-		//Testing List Methods
-		int listSize = 60;
-		int[] list = generateList(listSize,'r');
-		//Creates objects with sorting method classes
-		SelectionSort selsor = new SelectionSort();
-		InsertionSort insor = new InsertionSort();
-		//Print list before it is sorted
+    	Application.launch(args);
+		/*int[] list = generateList(60,'i');
 		printList(list);
-		//System.out.println("\n\n\n\n");
-		//Call object from sorting method.
-	    //long trival[] = insor.insertionSort(list);
-		long trival[] = selsor.selectionSort(list);
-		//System.out.println();
+		Radix s = new Radix();
+		 long trival[] = s.radixsort(list, 60);
+		 System.out.println();
 		 printList(list);
 		 System.out.println("Comparisons: " + trival[0]);
 		 System.out.println("Movements: " + trival[1]);
-		 System.out.println("Total Time: " + trival[2]);
+		 System.out.println("Total Time: " + trival[2]);*/
+
 		
 		
     	
