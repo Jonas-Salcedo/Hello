@@ -1,5 +1,3 @@
-//Max number of comparisons: n*(n-1)/2
-//Max number of movements: 2*(n-1) + n*(n-1)/2
 package Working;
 
 public class InsertionSort {
@@ -43,5 +41,8 @@ public class InsertionSort {
 		return threeVals;
 	}
 }
+
+
+
 
 
