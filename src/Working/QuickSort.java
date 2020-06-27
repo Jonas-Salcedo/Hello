@@ -38,14 +38,24 @@ public class QuickSort {
 
 		while(high>low){
 
+			//count comparisons
+			threeVals[0]++;
+
 			while(low <= high && list[low] <= pivot){
 				
 				low++;
+
+				threeVals[0]++;
 			}	
 
+			//another set of comparisons
+			threeVals[0]++;
 
-			while( low <= high && list[high]> pivot)
+			while( low <= high && list[high]> pivot){
 				high--;
+
+				threeVals[0]++;
+			}
 
 			if(high > low){
 				//thereis amovement done
@@ -57,9 +67,15 @@ public class QuickSort {
 			}
 		}
 
-		while(high > first && list[high] >= pivot)
+		threeVals[0]++;
+
+		while(high > first && list[high] >= pivot){
 			high--;
 
+			threeVals[0]++;
+		}
+
+		threeVals[0]++;
 		if(pivot > list[high]){
 			//another movement done
 			threeVals[1]++;
